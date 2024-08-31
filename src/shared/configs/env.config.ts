@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { parse } from 'ini';
 import { join } from 'path';
-import { loadString } from '../helpers/env.helper';
+import { loadNumber, loadString } from '../helpers/env.helper';
 
 let productionMode = true;
 
@@ -25,14 +25,8 @@ const basePath = process.cwd();
 require('dotenv').config({ path: join(basePath, '.common.env') });
 require('dotenv').config({ path: join(basePath, envPath) });
 
-const dataFolderPath = loadString('DATA_FOLDER_PATH');
-
-if (!existsSync(dataFolderPath)) {
-  mkdirSync(dataFolderPath, { recursive: true });
-}
-
 export default {
   productionMode,
   jwtSecret: loadString('JWT_SECRET'),
-  dataFolderPath,
+  port: loadNumber('PORT', { defaultValue: 5000 }),
 };
