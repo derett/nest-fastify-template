@@ -27,6 +27,7 @@ require('dotenv').config({ path: join(basePath, envPath) });
 
 export default {
   productionMode,
-  jwtSecret: loadString('JWT_SECRET'),
   port: loadNumber('PORT', { defaultValue: 5000 }),
+  jwtSecret: loadString('JWT_SECRET'),
+  jwtExpireSecs: loadNumber('JWT_EXPIRE_SECS', { defaultValue: 60 * 60 * 24 }),
 };

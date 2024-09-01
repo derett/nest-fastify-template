@@ -5,6 +5,7 @@ import { UpdatePostDto } from './dto/update-post.dto';
 
 import { Post } from 'src/entities/posts.entity';
 import { InjectModel } from '@nestjs/sequelize';
+import { pick } from 'lodash';
 
 @Injectable()
 export class PostsService {
@@ -28,10 +29,13 @@ export class PostsService {
   }
 
   async update(id: string, updatePostDto: UpdatePostDto): Promise<Post> {
-    const [, [entity]] = await this.model.update(updatePostDto, {
-      where: { id },
-      returning: true,
-    });
+    const [, [entity]] = await this.model.update(
+      pick(updatePostDto, this.updateAttributtes),
+      {
+        where: { id },
+        returning: true,
+      },
+    );
     return entity;
   }
 
