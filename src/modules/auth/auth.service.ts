@@ -11,7 +11,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/entities/users.entity';
 import { AccessToken, AccessTokenPayload } from 'src/shared/types/auth.types';
 
-const salt = 32;
+const salt = 10;
 
 @Injectable()
 export class AuthService {
@@ -26,12 +26,11 @@ export class AuthService {
       throw new BadRequestException('email already exists');
     }
 
-    const hashedPassword = await hash(user.password, salt);
-    const hashedConfirmPassword = await hash(user.passwordConfirmation, salt);
-
-    if (hashedPassword !== hashedConfirmPassword) {
+    if (user.password !== user.passwordConfirmation) {
       throw new BadRequestException('Password confirmation mismatch');
     }
+
+    const hashedPassword = await hash(user.password, salt);
 
     try {
       const createdUser = await this.usersService.create({
