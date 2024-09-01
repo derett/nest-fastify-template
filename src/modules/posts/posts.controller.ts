@@ -10,12 +10,15 @@ import {
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { RolesDec } from 'src/shared/decorators/roles.decorator';
+import { Roles } from 'src/shared/enums/roles.enum';
 
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Post()
+  @RolesDec(Roles.Admin)
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }

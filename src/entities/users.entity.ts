@@ -6,6 +6,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
+import { Roles } from 'src/shared/enums/roles.enum';
 
 @Table
 export class User extends Model<User> {
@@ -33,4 +34,11 @@ export class User extends Model<User> {
     allowNull: false,
   })
   password: string;
+
+  @Default(Roles.User)
+  @Column({
+    type: DataType.ENUM(...Object.values(Roles)),
+    allowNull: false,
+  })
+  role: Roles;
 }

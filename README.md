@@ -3,6 +3,7 @@
 </p>
 
 [passport guide](https://medium.com/@camillef_58366/implementing-authentication-in-nestjs-using-passport-and-jwt-5a565aa521de)
+[rbac](https://medium.com/@chandantechie/role-based-access-control-rbac-in-nestjs-a5963bcd70bd)
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
