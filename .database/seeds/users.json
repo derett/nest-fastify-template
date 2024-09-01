@@ -1,0 +1,23 @@
+[
+  {
+    "id": "439e7579-73c2-4de5-9a23-4013001fa579",
+    "email": "admin@email.com",
+    "username": "adminUser",
+    "password": "123",
+    "roles": ["admin"]
+  },
+  {
+    "id": "733d081b-db1f-40bf-8378-85007d6a3163",
+    "email": "user@email.com",
+    "username": "userUser",
+    "password": "123",
+    "roles": ["user"]
+  },
+  {
+    "id": "0ec07a28-63bd-4102-86c5-c9d9ac2b42c4",
+    "email": "guest@email.com",
+    "username": "guestUser",
+    "password": "123",
+    "roles": ["guest"]
+  }
+]

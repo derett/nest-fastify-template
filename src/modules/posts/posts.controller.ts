@@ -6,19 +6,22 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { RolesDec } from 'src/shared/decorators/roles.decorator';
-import { Roles } from 'src/shared/enums/roles.enum';
+import { UserRoles } from 'src/shared/enums/roles.enum';
+import { RolesGuard } from 'src/shared/guards/roles.guard';
 
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Post()
-  @RolesDec(Roles.Admin)
+  @RolesDec(UserRoles.Admin)
+  @UseGuards(RolesGuard)
   create(@Body() createPostDto: CreatePostDto) {
     return this.postsService.create(createPostDto);
   }

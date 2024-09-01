@@ -1,0 +1,17 @@
+[
+  {
+    "id": "72b347f1-8a35-46ca-b23a-9ecef16c0b31",
+    "name": "admin",
+    "description": "Has all privileges"
+  },
+  {
+    "id": "9cc42878-1f25-40a7-9122-965392da69be",
+    "name": "user",
+    "description": "Restricted access"
+  },
+  {
+    "id": "f06ba3a6-f196-44e2-b3cc-52c5bb17091a",
+    "name": "guest",
+    "description": "View only"
+  }
+]

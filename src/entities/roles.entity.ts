@@ -1,5 +1,4 @@
 import {
-  BelongsToMany,
   Column,
   DataType,
   Default,
@@ -7,11 +6,11 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Role } from './roles.entity';
-import { UserRole } from './user-role.entity';
 
-@Table
-export class User extends Model<User> {
+@Table({
+  timestamps: false,
+})
+export class Role extends Model<Role> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column(DataType.UUID)
@@ -22,21 +21,12 @@ export class User extends Model<User> {
     allowNull: false,
     unique: true,
   })
-  email: string;
+  name: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
     unique: true,
   })
-  username: string;
-
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
-  })
-  password: string;
-
-  @BelongsToMany(() => Role, () => UserRole)
-  roles: Role[];
+  description: string;
 }
