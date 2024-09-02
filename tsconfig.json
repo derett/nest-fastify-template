@@ -17,6 +17,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

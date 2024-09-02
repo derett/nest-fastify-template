@@ -13,6 +13,8 @@ try {
   productionMode = configData.NODE_ENV
     ? configData.NODE_ENV === 'production'
     : true;
+
+  process.env.LOGS_DISABLED = configData.LOGS_DISABLED;
 } catch {
   console.error('config.ini file is missing or invalid using default settings');
 }
@@ -27,6 +29,7 @@ require('dotenv').config({ path: join(basePath, envPath) });
 
 export default {
   productionMode,
+  logsDisabled: process.env.LOGS_DISABLED === 'true',
   port: loadNumber('PORT', { defaultValue: 5000 }),
   jwtSecret: loadString('JWT_SECRET'),
   jwtExpireSecs: loadNumber('JWT_EXPIRE_SECS', { defaultValue: 60 * 60 * 24 }),
